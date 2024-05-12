@@ -1,0 +1,281 @@
+<!-- Problem statement:
+Create a form and table using HTML, CSS and DOM.
+The form should contain the following field.
+First name, 
+last name,  
+address, 
+pincode,
+gender,
+choice of food(must choose at least 2 out of 5 options)
+state, 
+country
+
+On submission of the form values, the values must be appended to the table.
+The columns of the table must contain First name, last name, address, pincode, gender,
+food, state, country.
+Clear the form fields after updating the record in the table.
+Include the test suite in your html file which is given below. -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: thistle;
+      }
+      table {
+        border: 2px solid black;
+        border-collapse: collapse;
+        margin: 10px 20px;
+      }
+      thead,
+      th {
+        border: 2px solid black;
+        border-collapse: collapse;
+        background-color: darkgray;
+        color: black;
+        padding: 10px;
+        text-align: center;
+      }
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        background-color: lightgrey;
+        color: darkolivegreen;
+
+        padding: 5px;
+        text-align: center;
+      }
+      /* table,
+      thead,
+      tr,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      } */
+      h1 {
+        background-color: seagreen;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container" style="margin-top: 10px">
+      <div class="row">
+        <div class="col-sm-12">
+          <h1 class="font-weight-bold text-center" id="title">
+            DOM Manipulation With Forms
+          </h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12">
+          <p id="description">
+            Create a form and table using HTML, CSS and DOM. The form should
+            contain the following field. First name, last name, address,
+            pincode, state, country, gender, choice of food(must choose at least
+            2 out of 5 options) On submission of the form values, the values
+            must be appended to the table. The columns of the table must contain
+            First name, last name, address, pincode, gender, food, state,
+            country. Clear the form fields after updating the record in the
+            table. Include the test suite in your html file which is given
+            below.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <form id="form">
+      <div
+        class="form-group row"
+        style="margin-top: 25px; margin-left: 10px; margin-right: 10px"
+      >
+        <label for="first-name" class="col-sm-1 col-form-label"
+          >First Name</label
+        >
+        <div class="col-sm-5">
+          <input
+            type="text"
+            class="form-control"
+            id="first-name"
+            placeholder="Enter your first name"
+            required
+          />
+        </div>
+
+        <label for="lastName" class="col-sm-1 col-form-label">Last Name</label>
+        <div class="col-sm-5">
+          <input
+            type="text"
+            class="form-control"
+            id="last-name"
+            placeholder="Enter your last name"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-left: 10px; margin-right: 10px">
+        <label for="address" class="col-sm-1 col-form-label">Address</label>
+        <div class="col-sm-11">
+          <!-- <input
+            type="text"
+            class="form-control"
+            id="address"
+            placeholder="Enter your address"
+            required
+          /> -->
+          <textarea id="address" placeholder="Enter your address"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-left: 10px; margin-right: 10px">
+        <label for="pinCode" class="col-sm-1 col-form-label">Pin Code</label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            class="form-control"
+            id="pincode"
+            placeholder="Enter your pin code"
+            required
+          />
+        </div>
+
+        <label for="state" class="col-sm-1 col-form-label">State</label>
+        <div class="col-sm-2">
+          <input
+            type="text"
+            class="form-control"
+            id="state"
+            placeholder="Enter your state"
+          />
+        </div>
+
+        <label for="country" class="col-sm-1 col-form-label">Country</label>
+        <div class="col-sm-5">
+          <input
+            type="text"
+            class="form-control"
+            id="country"
+            placeholder="Enter your country"
+          />
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-left: 10px; margin-right: 10px">
+        <label for="gender" class="col-sm-1 col-form-label">Gender</label>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <!-- name attribute should be the same in order to group radio buttons -->
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="Male"
+            />
+            <label class="form-check-label"> Male </label>
+          </div>
+          <div class="form-check">
+            <input
+              class="form-check-input"
+              type="radio"
+              name="gender"
+              value="Female"
+            />
+            <label class="form-check-label"> Female </label>
+          </div>
+        </div>
+
+        <!-- <label for="choiceOfFood" class="col-sm-1 col-form-label"
+          >Choice of food</label
+        >
+        <div class="col-sm-5">
+          <input
+            type="text"
+            class="form-control"
+            id="choiceOfFood"
+            placeholder="Enter your choice of food"
+          />
+        </div> -->
+        <label for="choiceOfFood" class="col-sm-2 col-form-label"
+          >Choice of food</label
+        >
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input food"
+              value="Salad"
+              id="Salad"
+            />Salad
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input food"
+              value="Burger"
+              id="Burger"
+            />Burger
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input food"
+              value="Pizza"
+              id="Pizza"
+            />Pizza
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input food"
+              value="Chicken"
+              id="Chicken"
+            />Chicken
+          </label>
+        </div>
+        <div class="form-check-inline">
+          <label class="form-check-label">
+            <input
+              type="checkbox"
+              class="form-check-input food"
+              value="Salmon"
+              id="Salmon"
+            />Salmon
+          </label>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          onclick="addData()"
+          style="margin-left: 10px"
+          id="submit"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+
+    <script src="script.js"></script>
+    <script src="https://app.zenclass.in/sheets/v1/js/zen/suite/bundle.js"></script>
+  </body>
+</html>
